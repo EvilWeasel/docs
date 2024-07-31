@@ -1,0 +1,348 @@
+---
+title: Hands-On - Arbeiten mit Git
+description: Eine kurze aber praktische Übung zur täglichen arbeit mit Git.
+---
+
+In diesem Hands-On Guide lernen wir, wie man mit Git ein einfaches Repository verwaltet. Das Ziel dieser Übung ist die folgenden Sachverhalte zu verstehen und den Umgang mit Source-Code Verwaltungssoftware zu üben:
+
+- Erstellen von einem Repo (init)
+- Dateien zum Repo hinzufügen und sichern (add)
+- “Snapshots” des aktuellen Standes aufnehmen (commit)
+- Arbeiten mit branches (branch; parallele Versionsverläufe)
+- Zusammenführen von branches (merge)
+
+Um das ganze was wir hier nachbauen wollen mal zu visualisieren, hier ein sogenannter “GitGraph”. Mithilfe dieser GitGraph’s können wir super einfach einen Versionsverlauf genau visualisieren (Vorausgesetzt wir haben mit dem Repo sauber gearbeitet ;P)
+
+```mermaid
+gitGraph:
+options
+{
+    "nodeSpacing": 150,
+    "nodeRadius": 10
+}
+end
+commit tag: "root-commit"
+commit
+branch auth
+checkout auth
+commit tag: "first feature commit"
+checkout main
+commit
+merge auth
+commit tag: "merge auth into main"
+```
+
+## Requirements
+
+- [ ] Git installiert
+- [ ] Terminal und Shell (Windows: Powershell/Linux und Mac: Bash) bereit
+
+## Erster Teil
+
+Wie im Graph oben zu sehen, wollen wir gemeinsam ein Repo erstellen (init). Der Standartbranch “main” oder “master” ist der, mit dem wir anfangen. 
+Direkt nach der Erstellung des Repo’s, werden erstmal noch keine Änderungen festgehalten. Wir müssen dafür erstmal alle unsere Dateien unseres Projekts zum Repo hinzufügen (add). Wenn wir danach dann einen Snapshot (commit) aufnehmen, dann sind diese Dateien ab sofort Teil des Repo’s und werden dann auf Änderungen überwacht. 
+Im Anschluss daran werden wir als erstes einen neuen Commit machen, um eine Datei die vergessen wurde hinzuzufügen. (add und commit)
+
+## Zweiter Teil
+
+Im zweiten Teil wollen wir auf den viel spannenderen Teil von Git schauen. Nämlich wie wir dieses System nutzen, um mehrere Versionsverläufe gleichzeitig zu haben ⇒ was übersetzt heißt, dass wir unabhängig voneinander gemeinsam an der gleichen Code-Base arbeiten können.
+
+Dafür werden wir einen Branch erstellen, lernen wie wir zwischen Branches wechseln und diese verwalten können. Für unser Beispiel werden wir je Branch (main und auth) einen Commit erstellen und anschließend diese Version wieder zusammen zu führen (commit).
+
+## Git installieren
+
+todo: fotostrecke
+
+## Git Credentials
+
+Bevor wir mit Git arbeiten können, sollten wir vorher noch unsere Git-Credentials, also unsere Accountdaten, festlegen. Das machen wir, da jeder Commit folgende Informationen enthält:
+
+- Datum und Uhrzeit des Commits
+- **Author Username und Email**
+- Liste mit allen Änderungen
+- Ein Hash, generiert aus der Kombination aller anderen Felder
+
+Und genau weil jeder Commit diese Author-Informationen haben möchte, setzen wir diese Informationen direkt fest, bevor wir überhaupt die erste Version schreiben.
+
+Die Git-Credentials lassen sich über die `.gitconfig` Datei im Home-Verzeichnis des Users bearbeiten, also unter `~/.gitconfig`. Eine einfachere Methode zum ändern der `.gitconfig` ist es, den `git config` Command zu nutzen:
+
+```shell
+git config --global user.name "Max Mustermann"
+git config --global user.email "max.mustermann@aol.de"
+```
+
+
+:::tip
+
+Wenn du die Email wie gerade erläutert setzt, beachte, dass diese in jeder Commit-Message (Versions-Notiz) drin steht. Deine Email ist so also öffentlich. Möchtest du das nicht (wie die allermeisten), dann kannst du die NoReply-Email Addresse nutzen, welcher jeder User von Github bekommt. [Hier](https://github.com/settings/emails) bekommst du deine NoReply-Email. Diese setzt du dann als `user.email` in der Gitconfig:
+
+```shell
+git config --global user.email "<DeineEmail>"
+```
+
+:::
+
+## Repo erstellen
+
+Um ein neues Git Repository zu erstellen, navigiere in deinem Terminal zu dem Verzeichnis, in dem du das Repository erstellen möchtest und führe den Befehl `git init` aus.
+
+```shell
+git init
+```
+
+Dies erstellt ein leeres Git Repository im aktuellen Verzeichnis. Der Ordner in dem dieser Command ausgeführt wurde, enthält nun ein Git Repo (zu sehen an dem `.git` Ordner).
+
+Das Git-Repository (`.git/`) ist unsere Versionsdatenbank. Wie mit jeder anderen Datenbank auch, verändern wir in diesem Ordner **Nichts**. Um neue Versionen zu schreiben, Änderungen rückgängig zu machen oder ähnliches, nutzen wir das `git` Command-Line-Programm (CLI).
+
+## Änderungen tätigen
+
+Wir werden Änderungen an unserer Projekt mithilfe von neu erzeugten Dateien simulieren. Das ganze lässt sich natürlich 1 zu 1 auf Änderungen in den Dateien selbst übertragen. Das ganze soll nur zur Veranschaulichung dienen.
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+<Tabs>
+  <TabItem label="Powershell" icon="seti:windows">
+    ```powershell
+    New-Item -Type File main.py
+    ```
+  </TabItem>
+  <TabItem label="Linux/MacOS" icon="linux">
+    ```shell
+    touch main.py
+    ```
+  </TabItem>
+</Tabs>
+
+
+## Dateien zur Quellcodeverwaltung hinzufügen
+
+Um Dateien zur Quellcodeverwaltung hinzuzufügen, nutze den Befehl `git add <Dateiname>`. Wenn du alle Dateien in einem Verzeichnis hinzufügen möchtest, nutze den Befehl `git add .`. In unserem Fall wollen wir die zuvor erstellte `main.py` hinzufügen.
+
+```shell
+git add main.py
+```
+
+Dies fügt die angegebene Datei oder alle Dateien im Verzeichnis zur Staging Area hinzu.
+
+Die Staging-Area ist ein zwischenschritt, der uns helfen soll, komplexe Änderungen zu managen. In der Regel wollen wir aber alle getätigten Änderungen übernehmen, sodass der Prozess meist so aussieht: `git add . && git commit -m "<Nachricht>"`
+
+## Neue Version schreiben
+
+Um die Dateien aus der Staging-Area nun wirklich zur Quellcode-Verwaltung hinzuzufügen, müssen wir noch einen neuen Commit (Version) erstellen. Um das ganze etwas schneller und einfacher zu machen, nutzen wir außerdem noch die option `-m` welche einem Ermöglicht eine Nachricht (denke Changelog) mit dieser Version zu verewigen. Wenn wir die `-m` Option weglassen, müssen wir die Nachricht in einer von Git automatisch generierten Datei eintragen. Das verwirrt Anfänger oft, deswegen nutzen wir die Abkürzung, wie folgt:
+
+```powershell
+git commit -m "init -- root-commit"
+```
+
+Wenn alles geklappt hat, können wir unser `git log` mit dem Graphen vergleichen und schauen wo wir aktuell stehen:
+
+```mermaid
+gitGraph:
+options
+{
+    "nodeSpacing": 150,
+    "nodeRadius": 10
+}
+end
+commit tag: "root-commit"
+```
+
+Wie wir sehen, sollten wir nun unseren “main” oder “master” branch haben, zusammen mit einem Commit. Der erste erstellte Commit wird auch Root-Commit genannt. Nicht wunder, der Commit-Hash (`ee43525`) aus meinem Gitgraph ist mit Sicherheit nicht der gleiche, wie bei euch. Das ist normal so, da der Hash aus allen Feldern des Commit-Objekts generiert wird, unter anderem dein andereren Authorinformationen (wie Name und Email), welche ja individuell sind.
+
+## Zweiter Commit
+
+Nun stellen wir fest, dass wir noch eine Datei hinzufügen müssen. Wir haben die README vergessen. Diese fügen wir nun noch hinzu, indem wir diese zur Staging-Area hinzufügen und einen neuen Commit erstellen:
+
+<Tabs>
+  <TabItem label="Powershell" icon="seti:windows">
+    ```powershell
+    New-Item -Type File README.md
+    git add README.md
+    git commit -m "Added README.md"
+    ```
+  </TabItem>
+  <TabItem label="Linux/MacOS" icon="linux">
+    ```shell
+    touch README.md
+    git add README.md
+    git commit -m "Added README.md"
+    ```
+  </TabItem>
+</Tabs>
+
+
+Und hier wieder der GitGraph:
+
+```mermaid
+gitGraph:
+options
+{
+    "nodeSpacing": 150,
+    "nodeRadius": 10
+}
+end
+commit tag: "root-commit"
+commit
+```
+
+Soweit, so gut! Nun haben wir ein Repo erstellt und unsere Änderungen Schritt für Schritt vorgenommen und gesichert. Was ist allerdings nun, wenn ich (oder ein Kollege) an einer parallelen Version arbeiten muss. Nicht jedes Feature lässt sich innerhalb eines Tages implementieren. Und um sicher zu stellen, dass meine Änderungen nicht die meiner Kollegen beeinflussen, oder wir gleiche Änderungen vornehmen, können wir sogenannte Branches nutzen.
+
+## Branching
+
+Um einen parallelen Versionsverlauf (kurz: branch) zu erstellen, können wir folgenden Befehl nutzen:
+
+```shell
+git branch auth
+```
+
+Dieser Befehl erstellt einen neuen Branch namens “auth”. Um auf diesen zu wechseln und dort Änderungen vorzunehmen, können wir den `git checkout` Befehl nutzen:
+
+```shell
+git checkout auth
+```
+
+:::note
+
+Das gleiche Ergebnis (einen neuen Branch erstellen und diesen auschecken) können wir mit einem einzigen Befehl abkürzen:
+
+```shell
+git checkout -b auth
+```
+
+:::
+
+Nun, da wir auf dem neuen Branch sind können wir eine neue Version erzeugen und unser Auth-System “implementieren”.
+
+<Tabs>
+  <TabItem label="Powershell" icon="seti:windows">
+    ```powershell
+    New-Item -Type File auth.py
+    git add auth.py
+    git commit -m "Implemented auth"
+    ```
+  </TabItem>
+  <TabItem label="Linux/MacOS" icon="linux">
+    ```shell
+    touch auth.py
+    git add auth.py
+    git commit -m "Implemented auth"
+    ```
+  </TabItem>
+</Tabs>
+
+Und hier wieder das passende Diagramm dazu:
+
+```mermaid
+gitGraph:
+options
+{
+    "nodeSpacing": 150,
+    "nodeRadius": 10
+}
+end
+commit tag: "root-commit"
+commit
+branch auth
+checkout auth
+commit
+```
+
+Nun tuen wir mal so, als würde, während wir an “auth” arbeiten, unser Kollege eine neue Version in main erstellt. Wichtig: Vorher auf den richtigen Branch wechseln:
+
+<Tabs>
+  <TabItem label="Powershell" icon="seti:windows">
+    ```powershell
+    git checkout main # oder master ^^
+    New-Item -Type File routing.py
+    git add .
+    git commit -m "implemented routing"
+    ```
+  </TabItem>
+  <TabItem label="Linux/MacOS" icon="linux">
+    ```shell
+    git checkout main # oder master ^^
+    touch routing.py
+    git add .
+    git commit -m "implemented routing"
+    ```
+  </TabItem>
+</Tabs>
+
+```mermaid
+gitGraph:
+options
+{
+    "nodeSpacing": 150,
+    "nodeRadius": 10
+}
+end
+commit tag: "root-commit"
+commit
+branch auth
+checkout auth
+commit
+checkout main
+commit
+```
+
+Ihr habt es euch wahrscheinlich selbst schon gedacht: Es wäre Sinnvoller gewesen für unseren Kollegen, wenn dieser ebenfalls einen neuen Branch für sein Feature erstellt hätte. Aber das ist ja nur Exemplarisch.
+
+Jedenfalls haben wir jetzt folgende Situation:
+
+- Authentication ist implementiert, allerdings nur auf dem “auth” Branch
+- Routing ist implementiert, allerdings nur auf dem “main” Branch
+
+Um unsere **Versionen zusammen zu führen**, muss ich zuerst den Branch, welchen ich fortführen will auschecken (main), und anschließend die Änderungen aus dem anderen Branch (auth) **mergen**. Das ganze funktioniert in den meisten Situationen ganz einfach:
+
+```powershell
+# Vorher bitte sicherstellen, dass der "Working-Tree" "Working-Dir" sauber ist
+#   aka. Das alle Änderungen commited sind
+git checkout main
+git merge auth
+```
+
+Solange wir keine Änderungen in der gleichen Zeile der gleichen Datei vornehmen, kann Git diese Merges komplett automatisch selbst übernehmen. Ist das nicht schön ^^
+
+Schauen wir nun die Ausgangssituation an:
+
+```mermaid
+gitGraph:
+options
+{
+    "nodeSpacing": 150,
+    "nodeRadius": 10
+}
+end
+commit tag: "root-commit"
+commit
+branch auth
+checkout auth
+commit
+checkout main
+commit
+checkout main
+merge auth
+commit
+```
+
+Nun haben wir beide Versionen in dem “main” Branch vereint. Wir stellen aber fest, dass “auth” NICHT aktualisiert wurde. Ist eigentlich auch klar, wenn wir uns vor Augen führen, dass wir zuvor die Änderungen von “auth” in “main” übernommen haben aber nicht anderst herum.
+
+Wir brauchen diesen Feature-Branch (also unser “auth”) nun nicht mehr. Wir können uns nun entscheiden, ob wir diesen Feature-Branch löschen wollen, oder ob wir diesen mit dem neuen Commit auf “main” mergen, sodass beide Branches wieder gleich auf sind. Dies würde bei einem Branch-Namen wie “develop” oder “staging” mehr Sinn machen, da solche Branches dafür gedacht sind lange zu leben. Was wir gerade gemacht haben war eher ein sogenannter **"Feature-Branch"**. Diese werden üblicherweise nach Fertigstellung des Features verworfen.
+
+## Zusätzliche Infos
+
+### Staging-Area
+
+Die Staging-Area ist ein temporärer Speicherplatz, in dem Änderungen gesammelt werden, bevor sie committed werden. Um es etwas einfacher zu erklären: 
+
+> Die Staging-Area ist der Ort, wo die Änderungen landen, die wir mit `git add` hinzufügen.
+Alle Grüne Dateien, im `git status`, befinden sich in der Staging-Area.
+> 
+
+Dies ermöglicht es, den Zustand des Repositories zu kontrollieren und sicherzustellen, dass nur relevante Änderungen committed werden. Um den Inhalt der Staging-Area anzuzeigen, nutze den Befehl `git status`.
+
+Um eine Datei aus dem Staging-Bereich zu entfernen, nutze den `git rm --cached <dateiname>` Befehl. 
+
+```powershell
+git rm --cached <Dateiname>
+```

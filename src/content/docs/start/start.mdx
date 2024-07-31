@@ -1,0 +1,31 @@
+---
+title: Starte Hier
+description: Eine Übersicht über Evil-Docs.
+tableOfContents: false
+next: false
+hero:
+  title: Evil-Docs
+  tagline: Guides, Ressourcen und Referenzen rund um Anwendungsentwicklung, Systemintegration und andere IT-Themen.
+  actions:
+    - text: Los Geht's!
+      icon: rocket
+      link: /start/start
+      variant: primary
+    - text: Lerne mehr über Astro-Starlight
+      icon: right-arrow
+      link: https://starlight.astro.build/
+---
+
+import { CardGrid, Card } from '@astrojs/starlight/components'
+
+<CardGrid>
+  <Card title="Mithelfen" icon="star">
+    Hier könnte [Ihr Kurs](/start/contribution) stehen! Jede Seite ist eine einfache Markdown Datei in einer übersichtlichen Ordnerstruktur.
+  </Card>
+  <Card title="Trete der Community bei!" icon="discord">
+    <iframe style="width: 100%; height: 300px; border-radius: 15px;" src="https://discord.com/widget?id=1224790976363630762&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+  </Card>
+  <Card title="Moderne Webapps mit AstroJS?" icon="rocket">
+    Lerne, wie man mit [AstroJS](/astro/einleitung/) moderne und schnelle Webseiten baut. Statisches HTML? Serverseitiges Rendering? Oder doch lieber Clientseitiges Rendering? CMS? UI-Framework-Integrationen? Das alles ist Astro.
+  </Card>
+</CardGrid>

@@ -1,0 +1,497 @@
+---
+title: Shells
+description: Alles wichtige über Shells und andere Meeresfrüchte in Linux.
+sidebar:
+  order: 10
+---
+
+**todo:**
+
+- [ ] envs
+- [ ] alternative shells `zsh`
+- [ ] terminal multiplexers
+
+Unter Linux hat jedes Programm 3 Streams, welche Daten/Informationen übertragen können:
+
+- `stdin`
+- `stdout`
+- `stderr`
+
+Diese Streams funktionieren normalerweise so:
+
+- `STDIN` (**0**): In der Konsole ist unsere Eingabe `STDIN`. Wir geben Text in unsere Konsole ein, welcher dann an die Shell weiter gegeben werden. Diese kann dann Programme ausführen kann, basierend auf unserem Input.
+- `STDOUT` (**1**): Standardmäßig unser Output im Terminal. Wenn ein Programm Text in die Shell schreibt, dann landet dieser in der Regel als regulärer Output in der Konsole.
+- `STDERR` (**2**): Wird für Fehlermeldungen genutzt. Ist getrennt vom `STDOUT`, da man für Logging-Zwecke diese Fehler geg. in eine Datei weiter leitet. Auch der Output dieses Streams landet standardmäßig in der Konsole.
+
+### Piping `|`
+
+Wir können unter Linux diese Streams direkt beeinflussen und so z.B. den Output eines Commands in den Input eines anderen Lenken. Ein Beispiel:
+
+```bash
+prog1 | prog2 | prog3
+```
+
+Mit diesem Syntax wird der *Output* von `prog1` in den *Input* von `prog2` geleitet, welches die Daten weiter verarbeitet und diese dann an `prog3` weiter gibt, und so weiter...
+
+Hier ein praktisches Beispiel:
+
+**`groups.txt`**
+```
+dave:dave,sudo
+user:user,sshuser
+admin:admin,sudo,sshuser
+```
+
+Wir haben in dieser Datei Benutzer, und deren Gruppen. 1 Benutzer pro Zeile und die Gruppen hinter einem `:`(Kolon) und zwar Komma-separiert.
+
+Um nun nur die Gruppenlisten auszugeben, können wir mit dem Programm **cut** die Textzeilen am `:`(Kolon) trennen, und uns nur die "zweite Spalte" ausgeben:
+
+```bash
+cat groups.txt | cut -d: -f2
+```
+
+### Output redirection `>`
+
+Zusätzlich zu dem Piping, haben wir ebenfalls die Möglichkeit die Streams direkt anzusprechen und diese Umzuleiten:
+
+```bash
+# Gibt Text in STDOUT -> also Standartmäßig in die Konsole aus
+echo "hello world"
+```
+
+```bash
+# STDOUT wird weiter geleitet in "test.txt"
+echo "hello world!" 1> test.txt
+cat test.txt # "hello world!"
+```
+
+Da wir, wenn wir den **Output** weiterleiten, wir meistens den STDOUT meinen, können wir die "1" bei `1>` weg lassen. Der folgende Befehl bedeutet also genau das gleiche, wie der vorherige:
+
+```bash
+# Gibt Text in STDOUT und wird weiter geleitet in "test.txt"
+echo "hello world!" > test.txt
+cat test.txt # "hello world!"
+```
+
+In diesem Syntax wird der aktuelle Wert überschrieben, sprich wir überschreiben jedes mal die schon vorhandene Datei. Falls wir nun aber hinzufügen wollen, also *append*, dann nutzen wir diesen Syntax: `>>`
+
+```bash
+# Gibt Text in STDOUT und wird weiter geleitet in "test.txt" und hinzugefügt (nicht überschrieben)
+echo "hello world!" >> test.txt
+cat test.txt # "hello world!"
+```
+
+### Error redirection `2>`
+
+Genauso wie wir den `STDOUT` weiter leiten können, können wir das gleiche auch mit dem `STDERR` machen, um z.B. nur die Fehlermeldungen zu loggen (abzuspeichern).
+
+```bash
+# Generiert keinen Output in der Konsole, da die Fehlermeldung in "err.log" weiter geleitet wird.
+ls -xyz someIncorrectInput 2> err.log
+```
+
+Auch hier können wir *append* nutzen, anstatt vorhandene Zeilen zu löschen (hilfreich beim Arbeiten mit Logs).
+
+```bash
+# Generiert keinen Output in der Konsole, da die Fehlermeldung in "err.log" weiter geleitet wird und dem vorherigen Inhalt hinzugefügt.
+ls -xyz someIncorrectInput 2>> err.log
+```
+
+### Input redirection `<`
+
+Manchmal müssen wir Commands nutzen, welche viele oder lange Parameter erfordern. Für das schreiben einer Email über das Terminal, müssten wir den ganzen Inhalt als Parameter übergeben, was das schreiben einer Email alles andere als Benutzerfreundlich macht.
+
+Zum Glück können wir auch das Umleiten von `STDIN` nutzen, um den **Body** der Email aus einer Datei zu laden.
+
+```bash
+mail -s "Das ist der Betreff" empfaengerUser < message.txt
+```
+
+### Verketten von Befehlen mit `&&`
+
+Wenn man mal mehrere Befehle nacheinander ausführen muss und die individuellen Befehle aber eine gewisse Zeit zur ausführung Benötigen, kann man sich Zeit sparen, indem man diese Nacheinander ausführen lässt mit einer `UND` Verknüpfung.
+
+```bash
+sudo apt update && sudo apt upgrade -y && sudo apt install vim && vim example.js
+```
+
+In diesem Beispiel werden **alle Befehle nacheinander ausgeführt**, wobei der nächste Befehl nur gestartet wird, wenn alle vorherigen Prozesse ohne Fehler beenden.
+
+Man kann sich das so vorstellen:
+
+- `sudo apt update` updated die Packetliste. Solange mindestens 1 Mirror (Repository-Server) erreichbar ist, beendet das Program mit **Fehlercode 0 => alles I.O.**
+- `sudo apt upgrade -y` upgraded alle Softwarepackete, für die Updates vorhanden sind. Solange mindestens 1 erfolgreich geupdatet werden kann oder keine Updates vorhanden sind beendet mit Fehlercode 0
+- `sudo apt install vim` sucht das Packet "vim" in der Mirrorlist und läd es, falls es gefunden wird, aus dem Repository runter und installiert es. Beendet mit Fehlercode 0, wenn Programm erfolgreich installiert worden ist.
+- `vim example.js` startet den Texteditor vim in der `example.js` Datei.
+
+Sobald einer dieser Befehle mit einem Fehlercode der nicht 0 entspricht beendet, dann werden alle mit `&&` Verknüpften Befehle **nicht** ausgeführt.
+
+## Filtern und Finden
+
+### cut
+
+`cut` ist ein Unix-basiertes Kommandozeilen-Programm, das zum Ausschneiden von bestimmten Spalten oder Felder aus einer Zeile verwendet wird.
+
+#### Verwendung
+
+Der Syntax für `cut` lautet wie folgt:
+
+```bash
+cut [OPTIONS] [INPUTFILE(S)]
+```
+
+#### Wichtige Optionen
+
+-   `-b`: Auswahl von Byte-Positionen
+-   `-c`: Auswahl von Zeichen-Positionen
+-   `-f`: Auswahl von Feldern, die durch ein Trennzeichen getrennt sind
+-   `-d`: Angabe des Trennzeichens (Standard ist Tab)
+-   `--output-delimiter`: Angabe des Ausgabe-Trennzeichens
+
+#### Beispiel
+
+Angenommen wir haben folgende Datei:
+
+**`input.txt`**
+```text
+Name,Age,City
+John Doe,35,New York
+Jane Doe,29,Los Angeles
+Jim Smith,40,Chicago
+```
+
+Dann können wir so nur die Namen anzeigen:
+
+```shell
+cut -d, -f1 input.txt
+# Output
+# Name
+# John Doe
+# Jane Doe
+# Jim Smith
+```
+
+Und so nur die Stadt:
+
+```bash
+cut -d, -f1 input.txt
+# Output
+# City
+# New York
+# Los Angeles
+# Chicago
+```
+
+Und so das Alter und die Stadt:
+
+```bash
+cut -d, -f1,2 input.txt
+# Output
+# Age,City
+# 35,New York
+# 29,Los Angeles
+# 40,Chicago
+```
+
+### sort
+
+`sort` ist ein Unix-basiertes Kommandozeilen-Programm, das zum Sortieren von Textdateien verwendet wird.
+
+#### Verwendung
+
+Die Syntax für `sort` lautet wie folgt:
+
+css
+
+`sort [OPTIONS] [INPUTFILE(S)]`
+
+#### Wichtige Optionen
+
+-   `-n`: sortiert die Eingabe als Zahlen
+-   `-r`: sortiert die Eingabe in umgekehrter Reihenfolge
+-   `-k`: sortiert die Eingabe nach einem bestimmten Schlüssel (Spalte)
+-   `-t`: definiert das Trennzeichen für den Schlüssel (Standard ist Tab)
+-   `-u`: entfernt doppelte Zeilen
+-   `-o`: schreibt das sortierte Ergebnis in eine neue Datei
+
+#### Beispiele
+
+##### Sortieren von Zahlen
+
+```bash
+echo -e "2\n4\n1\n3" | sort -n
+```
+
+`sort -n` sortiert die Zahlen aufsteigend:
+
+**`output`**
+```
+1 2 3 4
+```
+
+#### Sortieren von Texten
+
+```bash
+echo -e "dog\ncat\nbird" | sort
+```
+
+Dieser Befehl sortiert die Wörter alphabetisch:
+
+**`output`**
+```bash
+bird
+cat
+dog
+```
+
+#### Sortieren von Spalten
+
+```bash
+echo -e "dog 30\ncat 20\nbird 10" | sort -k 2n
+```
+
+Dieser Befehl sortiert die Eingabe nach dem Wert in der zweiten Spalte (numerisch aufsteigend):
+
+**`output`**
+```bash
+bird 10
+cat 20
+dog 30
+```
+
+#### Entfernen doppelter Zeilen
+
+```bash
+echo -e "dog\ndog\ncat" | sort -u
+```
+
+Dieser Befehl entfernt doppelte Zeilen und sortiert die Eingabe:
+
+**`output`**
+```bash
+cat
+dog
+```
+
+### uniq
+
+`uniq` ist ein Unix-basiertes Kommandozeilen-Programm, das zum Entfernen von doppelten Zeilen aus einer Textdatei verwendet wird.
+
+#### Verwendung
+
+Der Syntax für `uniq` lautet wie folgt:
+
+```bash
+uniq [OPTIONS] [INPUTFILE(S)]
+```
+
+#### Wichtige Optionen
+
+-   `-c`: zählt die Anzahl der Vorkommen jeder Zeile
+-   `-d`: zeigt nur doppelte Zeilen
+-   `-u`: zeigt nur eindeutige Zeilen
+
+#### Beispiele
+
+##### Entfernen doppelter Zeilen
+
+```bash
+echo -e "dog\ndog\ncat" | uniq
+```
+
+Dieser Befehl entfernt doppelte Zeilen und ergibt:
+
+
+**`output`**
+```bash
+dog
+cat
+```
+
+##### Zählen der Vorkommen jeder Zeile
+
+```bash
+echo -e "dog\ndog\ncat" | uniq -c
+```
+
+Dieser Befehl zählt die Anzahl der Vorkommen jeder Zeile und ergibt:
+
+**`output`**
+```bash
+2 dog
+1 cat
+```
+
+##### Anzeigen nur doppelter Zeilen
+
+```bash
+echo -e "dog\ndog\ncat" | uniq -d
+```
+
+
+Dieser Befehl zeigt nur doppelte Zeilen und ergibt:
+
+**`output`**
+```bash
+dog
+```
+
+##### Anzeigen nur eindeutiger Zeilen
+
+```bash
+echo -e "dog\ndog\ncat" | uniq -u
+```
+
+**`output`**
+```bash
+cat
+```
+
+### wc
+
+`wc` (Word Count) ist ein Unix-basiertes Kommandozeilen-Programm, das zur Zählung von Zeilen, Wörtern und Zeichen in einer Textdatei verwendet wird.
+
+#### Verwendung
+
+Die Syntax für `wc` lautet wie folgt:
+
+```bash
+wc [OPTIONS] [FILE(S)]
+```
+
+#### Wichtige Optionen
+
+-   `-l`: zählt die Anzahl der Zeilen in einer Datei
+-   `-w`: zählt die Anzahl der Wörter in einer Datei
+-   `-c`: zählt die Anzahl der Zeichen in einer Datei
+
+#### Beispiele
+
+**`pets.txt`**
+```txt
+cat
+dog
+mouse
+```
+
+##### Zählen der Zeilen in einer Textdatei
+
+```bash
+wc -l pets.txt
+```
+
+Dieser Befehl zählt die Anzahl der Zeilen in der Datei "pets.txt" und gibt zurück:
+
+**`output`**
+```bash
+3 pets.txt
+```
+
+##### Zählen der Wörter in einer Textdatei
+
+```bash
+wc -w pets.txt
+```
+
+Dieser Befehl zählt die Anzahl der Wörter in der Datei "pets.txt" und gibt zurück:
+
+**`output`**
+```bash
+4 pets.txt
+```
+
+##### Zählen der Zeichen in einer Textdatei
+
+```bash
+wc -c pets.txt
+```
+
+Dieser Befehl zählt die Anzahl der Zeichen in der Datei "pets.txt" und gibt zurück:
+
+**`output`**
+```bash
+15 pets.txt
+```
+
+##### Zählen der Zeilen, Wörter und Zeichen in einer Textdatei
+
+```bash
+wc pets.txt
+```
+
+Dieser Befehl zählt die Anzahl der Zeilen, Wörter und Zeichen in der Datei "pets.txt" und gibt:
+
+**`output`**
+```bash
+3 4 15 pets.txt
+```
+
+### grep
+
+"grep" ist ein Kommandozeilen-Tool in Linux, das verwendet wird, um Zeilen in Textdateien oder anderen Eingaben zu suchen, die einen bestimmten Suchbegriff enthalten.
+
+#### Wofür wird grep verwendet?
+
+grep wird häufig verwendet, um bestimmte Zeilen in Logdateien, Konfigurationsdateien oder anderen Textdateien zu finden. Es kann auch verwendet werden, um den Inhalt von Dateien zu filtern, bevor sie weiter verarbeitet werden.
+
+#### Beispiele zur Verwendung von grep
+
+Um grep zu verwenden, musst du die Befehlszeile öffnen und folgenden Befehl eingeben:
+
+```bash
+grep [Suchbegriff] [Dateiname(n)]
+```
+
+Für die folgenden Beispiele nutzen wir folgende Datei:
+
+
+**`logfile.txt`**
+```txt
+error: Unable to connect to database
+warning: Low disk space
+error: Login failed
+info: Backup completed successfully
+error: File not found
+warning: Network connection lost
+info: User logged in successfully
+```
+
+##### Zeilen in einer Datei finden, die den Suchbegriff "error" enthalten:
+
+```bash
+grep error logfile.txt
+```
+
+**`output`**
+```bash
+error: Unable to connect to database
+error: Login failed
+error: File not found
+```
+
+##### Zeilen in mehreren Dateien finden, die den Suchbegriff "error" enthalten:
+
+```bash
+grep error logfile.txt logfile2.txt
+```
+
+**`output`**
+```bash
+logfile.txt:error: Unable to connect to database
+logfile.txt:error: Login failed
+logfile.txt:error: File not found
+logfile2.txt:error: Unable to connect to database
+logfile2.txt:error: Login failed
+logfile2.txt:error: File not found
+```
+
+##### Zeilen in einer Datei finden, die den Suchbegriff "error" enthalten und die Ausgabe nur die Dateinamen anzeigen:
+
+```bash
+grep -l error logfile*.txt
+```
+
+**`output`**
+```bash
+logfile.txt
+```

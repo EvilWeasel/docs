@@ -1,0 +1,116 @@
+:root {
+	font-size: 1.125rem;
+  --sl-font: "MonaspaceArgonVar";
+  --sl-font-mono: "MonaspaceKryptonVar";
+	--sl-content-width: 80ch;
+	/* Text size and line height */
+	--sl-text-xs: 0.8125rem; /* 13px */
+	--sl-text-sm: 0.875rem; /* 14px */
+	--sl-text-base: 1rem; /* 16px */
+	--sl-text-lg: 1.125rem; /* 18px */
+	--sl-text-xl: 1.25rem; /* 20px */
+	--sl-text-2xl: 1.5rem; /* 24px */
+	--sl-text-3xl: 1.8125rem; /* 29px */
+	--sl-text-4xl: 2.1875rem; /* 35px */
+	--sl-text-5xl: 2.625rem; /* 42px */
+	--sl-text-6xl: 4rem; /* 64px */
+
+	--sl-text-body: var(--sl-text-base);
+	--sl-text-body-sm: var(--sl-text-xs);
+	--sl-text-code: var(--sl-text-sm);
+	--sl-text-code-sm: var(--sl-text-xs);
+	--sl-text-h1: var(--sl-text-5xl);
+	--sl-text-h2: var(--sl-text-4xl);
+	--sl-text-h3: var(--sl-text-3xl);
+	--sl-text-h4: var(--sl-text-2xl);
+	--sl-text-h5: var(--sl-text-xl);
+}
+/* Dark mode colors. */
+:root {
+	--sl-color-accent-low: #321342;
+	--sl-color-accent: #9a00d2;
+	--sl-color-accent-high: #dcb8f3;
+	--sl-color-white: #ffffff;
+	--sl-color-gray-1: #ebeef6;
+	--sl-color-gray-2: #bec2cb;
+	--sl-color-gray-3: #858b9d;
+	--sl-color-gray-4: #525868;
+	--sl-color-gray-5: #323847;
+	--sl-color-gray-6: #212635;
+	--sl-color-black: #16181f;
+}
+/* Light mode colors. */
+:root[data-theme='light'] {
+	--sl-color-accent-low: #e6cbf8;
+	--sl-color-accent: #9d00d6;
+	--sl-color-accent-high: #481262;
+	--sl-color-white: #16181f;
+	--sl-color-gray-1: #212635;
+	--sl-color-gray-2: #323847;
+	--sl-color-gray-3: #525868;
+	--sl-color-gray-4: #858b9d;
+	--sl-color-gray-5: #bec2cb;
+	--sl-color-gray-6: #ebeef6;
+	--sl-color-gray-7: #f5f6fa;
+	--sl-color-black: #ffffff;
+}
+main {
+  font-family: "MonaspaceNeonVar";
+}
+h1,h2,h3,h4,h5,h6 {
+  font-family: "MonaspaceXenonVar";
+}
+
+.sl-markdown-content em {
+	font-variation-settings: 
+		"wght" 500,
+		"wdth" 105,
+		"slnt" -11;
+}
+.sl-markdown-content strong {
+	font-variation-settings: 
+		"wght" 600,
+		"wdth" 105,
+		"slnt" 0;
+}
+.sidebar-content a,
+.right-sidebar-panel nav a {
+  transition: all .5s ease;
+  font-variation-settings:
+      "wght" 400,
+      "wdth" 100,
+      "slnt" 0;
+	padding-right: 10px;
+}
+.right-sidebar-panel a {
+	font-size: 0.9em;
+}
+.sidebar-content a:hover,
+.right-sidebar-panel nav a:hover {
+  font-variation-settings:
+      "wght" 500,
+      "wdth" 105,
+      "slnt" -11;
+  text-shadow: 0 0 5px var(--sl-color-accent-high);
+	/* Prevent layout-shift */
+	padding-right: 0;
+}
+
+strong {
+	font-weight: bold;
+	position: relative;
+	animation: text-shadow-blur 10s infinite ease;
+	text-shadow: 0 0 5px #dfdfdf;
+}
+
+@keyframes text-shadow-blur {
+	0% {
+			text-shadow: -5px 0 10px var(--sl-color-accent);
+	}
+	50% {
+		text-shadow: 5px 0 10px var(--sl-color-accent);
+	}
+	100% {
+		text-shadow: -5px 0 10px var(--sl-color-accent);
+	}
+}

@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="366.84439mm"
+   height="251.71503mm"
+   viewBox="0 0 366.84439 251.71503"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
+   sodipodi:docname="Aufbau-Site.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.73851712"
+     inkscape:cx="616.7765"
+     inkscape:cy="459.02795"
+     inkscape:window-width="2560"
+     inkscape:window-height="1009"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer3" />
+  <defs
+     id="defs2">
+    <marker
+       style="overflow:visible"
+       id="Arrow1"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Arrow1"
+       markerWidth="4.0606604"
+       markerHeight="6.7071066"
+       viewBox="0 0 4.0606602 6.7071068"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         style="fill:none;stroke:context-stroke;stroke-width:1;stroke-linecap:butt"
+         d="M 3,-3 0,0 3,3"
+         id="path5057"
+         transform="rotate(180,0.125,0)"
+         sodipodi:nodetypes="ccc" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Stop"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Stop"
+       markerWidth="1"
+       markerHeight="48"
+       viewBox="0 0 1 8"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="none">
+      <path
+         style="fill:none;stroke:context-stroke;stroke-width:1"
+         d="M 0,4 V -4"
+         id="path171" />
+    </marker>
+  </defs>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="Ebene 3"
+     transform="translate(-53.022918,-19.3462)">
+    <rect
+       style="display:inline;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       id="rect5366"
+       width="380.47525"
+       height="258.30759"
+       x="45.141132"
+       y="16.121834"
+       ry="0" />
+  </g>
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-53.022919,-19.3462)">
+    <g
+       id="g2359">
+      <rect
+         style="fill:#ff6600;stroke:#2b1100;stroke-width:0.90777;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+         id="rect747"
+         width="70.518021"
+         height="39.611736"
+         x="90.646088"
+         y="-170.79065"
+         ry="4.8981266"
+         transform="scale(1,-1)" />
+      <text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:11.2889px;font-family:'Fira Code';-inkscape-font-specification:'Fira Code Bold';fill:#ffece0;fill-opacity:1;stroke:none;stroke-width:0.460532;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+         x="125.9051"
+         y="147.8427"
+         id="text1465"><tspan
+           sodipodi:role="line"
+           id="tspan1463"
+           style="font-size:11.2889px;text-align:center;text-anchor:middle;fill:#ffece0;fill-opacity:1;stroke:none;stroke-width:0.460532;stroke-opacity:1"
+           x="125.9051"
+           y="147.8427">HTML</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:11.2889px;text-align:center;text-anchor:middle;fill:#ffece0;fill-opacity:1;stroke:none;stroke-width:0.460532;stroke-opacity:1"
+           x="125.9051"
+           y="161.95383"
+           id="tspan1467">Dokument</tspan></text>
+    </g>
+    <g
+       id="g2369"
+       transform="translate(106.40411,-48.365501)">
+      <rect
+         style="fill:#ff6600;stroke:#2b1100;stroke-width:0.90777;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+         id="rect2361"
+         width="70.518021"
+         height="39.611736"
+         x="90.646088"
+         y="-170.79065"
+         ry="4.8981266"
+         transform="scale(1,-1)" />
+      <text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:11.2889px;font-family:'Fira Code';-inkscape-font-specification:'Fira Code Bold';fill:#ffece0;fill-opacity:1;stroke:none;stroke-width:0.460532;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+         x="125.9051"
+         y="147.8427"
+         id="text2367"><tspan
+           sodipodi:role="line"
+           id="tspan2363"
+           style="font-size:11.2889px;text-align:center;text-anchor:middle;fill:#ffece0;fill-opacity:1;stroke:none;stroke-width:0.460532;stroke-opacity:1"
+           x="125.9051"
+           y="147.8427">HTML</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:11.2889px;text-align:center;text-anchor:middle;fill:#ffece0;fill-opacity:1;stroke:none;stroke-width:0.460532;stroke-opacity:1"
+           x="125.9051"
+           y="161.95383"
+           id="tspan2365">Dokument</tspan></text>
+    </g>
+    <g
+       id="g2379"
+       transform="translate(106.40411,50.156815)">
+      <rect
+         style="fill:#ff6600;stroke:#2b1100;stroke-width:0.90777;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+         id="rect2371"
+         width="70.518021"
+         height="39.611736"
+         x="90.646088"
+         y="-170.79065"
+         ry="4.8981266"
+         transform="scale(1,-1)" />
+      <text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:11.2889px;font-family:'Fira Code';-inkscape-font-specification:'Fira Code Bold';fill:#ffece0;fill-opacity:1;stroke:none;stroke-width:0.460532;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+         x="125.9051"
+         y="147.8427"
+         id="text2377"><tspan
+           sodipodi:role="line"
+           id="tspan2373"
+           style="font-size:11.2889px;text-align:center;text-anchor:middle;fill:#ffece0;fill-opacity:1;stroke:none;stroke-width:0.460532;stroke-opacity:1"
+           x="125.9051"
+           y="147.8427">HTML</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:11.2889px;text-align:center;text-anchor:middle;fill:#ffece0;fill-opacity:1;stroke:none;stroke-width:0.460532;stroke-opacity:1"
+           x="125.9051"
+           y="161.95383"
+           id="tspan2375">Dokument</tspan></text>
+    </g>
+    <g
+       id="g2389"
+       transform="translate(230.00482,75.593485)">
+      <rect
+         style="fill:#ff6600;stroke:#2b1100;stroke-width:0.90777;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+         id="rect2381"
+         width="70.518021"
+         height="39.611736"
+         x="90.646088"
+         y="-170.79065"
+         ry="4.8981266"
+         transform="scale(1,-1)" />
+      <text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:11.2889px;font-family:'Fira Code';-inkscape-font-specification:'Fira Code Bold';fill:#ffece0;fill-opacity:1;stroke:none;stroke-width:0.460532;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+         x="125.9051"
+         y="147.8427"
+         id="text2387"><tspan
+           sodipodi:role="line"
+           id="tspan2383"
+           style="font-size:11.2889px;text-align:center;text-anchor:middle;fill:#ffece0;fill-opacity:1;stroke:none;stroke-width:0.460532;stroke-opacity:1"
+           x="125.9051"
+           y="147.8427">HTML</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:11.2889px;text-align:center;text-anchor:middle;fill:#ffece0;fill-opacity:1;stroke:none;stroke-width:0.460532;stroke-opacity:1"
+           x="125.9051"
+           y="161.95383"
+           id="tspan2385">Dokument</tspan></text>
+    </g>
+    <g
+       id="g2399"
+       transform="translate(230.00482,26.272616)">
+      <rect
+         style="fill:#ff6600;stroke:#2b1100;stroke-width:0.90777;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+         id="rect2391"
+         width="70.518021"
+         height="39.611736"
+         x="90.646088"
+         y="-170.79065"
+         ry="4.8981266"
+         transform="scale(1,-1)" />
+      <text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:11.2889px;font-family:'Fira Code';-inkscape-font-specification:'Fira Code Bold';fill:#ffece0;fill-opacity:1;stroke:none;stroke-width:0.460532;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+         x="125.9051"
+         y="147.8427"
+         id="text2397"><tspan
+           sodipodi:role="line"
+           id="tspan2393"
+           style="font-size:11.2889px;text-align:center;text-anchor:middle;fill:#ffece0;fill-opacity:1;stroke:none;stroke-width:0.460532;stroke-opacity:1"
+           x="125.9051"
+           y="147.8427">HTML</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:11.2889px;text-align:center;text-anchor:middle;fill:#ffece0;fill-opacity:1;stroke:none;stroke-width:0.460532;stroke-opacity:1"
+           x="125.9051"
+           y="161.95383"
+           id="tspan2395">Dokument</tspan></text>
+    </g>
+    <g
+       id="g2409"
+       transform="translate(230.00482,-23.048252)">
+      <rect
+         style="fill:#ff6600;stroke:#2b1100;stroke-width:0.90777;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+         id="rect2401"
+         width="70.518021"
+         height="39.611736"
+         x="90.646088"
+         y="-170.79065"
+         ry="4.8981266"
+         transform="scale(1,-1)" />
+      <text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:11.2889px;font-family:'Fira Code';-inkscape-font-specification:'Fira Code Bold';fill:#ffece0;fill-opacity:1;stroke:none;stroke-width:0.460532;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+         x="125.9051"
+         y="147.8427"
+         id="text2407"><tspan
+           sodipodi:role="line"
+           id="tspan2403"
+           style="font-size:11.2889px;text-align:center;text-anchor:middle;fill:#ffece0;fill-opacity:1;stroke:none;stroke-width:0.460532;stroke-opacity:1"
+           x="125.9051"
+           y="147.8427">HTML</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:11.2889px;text-align:center;text-anchor:middle;fill:#ffece0;fill-opacity:1;stroke:none;stroke-width:0.460532;stroke-opacity:1"
+           x="125.9051"
+           y="161.95383"
+           id="tspan2405">Dokument</tspan></text>
+    </g>
+    <g
+       id="g2419"
+       transform="translate(230.00482,-72.369121)">
+      <rect
+         style="fill:#ff6600;stroke:#2b1100;stroke-width:0.90777;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+         id="rect2411"
+         width="70.518021"
+         height="39.611736"
+         x="90.646088"
+         y="-170.79065"
+         ry="4.8981266"
+         transform="scale(1,-1)" />
+      <text
+         xml:space="preserve"
+         style="font-weight:bold;font-size:11.2889px;font-family:'Fira Code';-inkscape-font-specification:'Fira Code Bold';fill:#ffece0;fill-opacity:1;stroke:none;stroke-width:0.460532;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+         x="125.9051"
+         y="147.8427"
+         id="text2417"><tspan
+           sodipodi:role="line"
+           id="tspan2413"
+           style="font-size:11.2889px;text-align:center;text-anchor:middle;fill:#ffece0;fill-opacity:1;stroke:none;stroke-width:0.460532;stroke-opacity:1"
+           x="125.9051"
+           y="147.8427">HTML</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:11.2889px;text-align:center;text-anchor:middle;fill:#ffece0;fill-opacity:1;stroke:none;stroke-width:0.460532;stroke-opacity:1"
+           x="125.9051"
+           y="161.95383"
+           id="tspan2415">Dokument</tspan></text>
+    </g>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.014;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="m 161.22951,146.44019 c 22.74213,-6.80676 11.99054,-41.02721 35.85477,-43.58331"
+       id="path2953"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.014;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="M 267.99187,98.074689 C 285.94231,97.85628 293.83625,76.896624 320.32674,77.599341"
+       id="path3017"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.014;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="m 267.81274,106.43951 c 25.88785,-0.41085 24.03234,21.68721 52.33487,20.47535"
+       id="path3019"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.014;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="m 196.90515,199.82137 c -22.74213,-6.80676 -11.63228,-42.102 -35.49651,-44.6581"
+       id="path3025"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="m 161.11799,150.98478 c 57.33068,-3.07555 68.40585,25.96466 159.09134,26.59967"
+       id="path3027"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="m 268.02331,201.39749 c 22.91643,1.21172 29.13132,25.7839 52.56602,26.59966"
+       id="path3029"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-weight:bold;font-size:11.2889px;font-family:'Fira Code';-inkscape-font-specification:'Fira Code Bold';text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       x="74.565804"
+       y="102.82148"
+       id="text3033"><tspan
+         sodipodi:role="line"
+         id="tspan3031"
+         style="text-align:start;text-anchor:start;fill:#000000;fill-opacity:1;stroke-width:1"
+         x="74.565804"
+         y="102.82148">Webseite</tspan></text>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#Stop);marker-end:url(#Arrow1)"
+       d="m 101.92581,104.97105 c -0.0749,14.23772 16.60819,6.53347 18.27141,25.43667"
+       id="path3397"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Ebene 2"
+     transform="translate(-53.022919,-19.3462)">
+    <rect
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       id="rect3780"
+       width="341.57993"
+       height="212.48141"
+       x="65.339615"
+       y="44.410461"
+       ry="18.132719" />
+    <text
+       xml:space="preserve"
+       style="font-weight:bold;font-size:11.2889px;font-family:'Fira Code';-inkscape-font-specification:'Fira Code Bold';text-align:start;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       x="89.207474"
+       y="40.483715"
+       id="text3784"><tspan
+         sodipodi:role="line"
+         id="tspan3782"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:2"
+         x="89.207474"
+         y="40.483715">Website</tspan></text>
+  </g>
+</svg>

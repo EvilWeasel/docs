@@ -1,0 +1,174 @@
+---
+title: Was ist Powershell?
+description: Eine Einleitung in das Thema "Powershell".
+sidebar:
+  order: 1
+---
+
+
+Hast du dich jemals gefragt, was PowerShell ist und wie es das Leben als Systemadministrator vereinfachen kann? In diesem Modul untersuchen wir, was PowerShell ist und warum es ein unverzichtbares Werkzeug für jeden Windows-Administrator und -Entwickler ist.
+
+PowerShell ist eine Shell und Skriptsprache, die für Systemverwaltungsaufgaben konzipiert wurde. Es bietet eine Möglichkeiten, sich wiederholende Aufgaben wie die Konfiguration von Servern oder die Verwaltung von Windows-Diensten zu automatisieren. Mit PowerShell kannst du problemlos Remote-Systeme verwalten, Skripte ausführen und Systeminformationen abrufen und vieles mehr. Alles von einer einzigen Schnittstelle aus.
+
+Neben seiner Befehlszeilenschnittstelle enthält PowerShell auch eine Skriptsprache, mit der du komplexe Aufgaben automatisieren kannst.
+
+## Was ist eine Shell
+
+Eine Shell ist eine Schnittstelle, die es Benutzern ermöglicht, mit einem Betriebssystem zu interagieren, indem sie Befehle eingeben oder Skripte ausführen. Im Kontext von PowerShell beziehen wir uns auf eine text-basierte Schnittstelle, welche das Ausführen von Befehlen und Skripten auf dem Windows Betriebssystem ermöglicht.
+
+Es gibt verschiedene Arten von Shells, wie die unter Unix beliebten `bash` Shell oder `cmd.exe`, die veraltete Windows-Befehlszeile. PowerShell ist jedoch speziell für das Windows-Betriebssystem konzipiert, obwohl es jetzt auch auf anderen Plattformen wie macOS und Linux verfügbar ist.
+
+
+import { LinkCard, CardGrid } from '@astrojs/starlight/components';
+
+<LinkCard title="Installieren von PowerShell unter Linux - PowerShell" href="https://learn.microsoft.com/de-de/powershell/scripting/install/installing-powershell-on-linux?view=powershell-7.3" target="_blank" />
+
+## Vorteile von PowerShell
+
+PowerShell bietet mehrere Vorteile gegenüber traditionellen Befehlszeilenshells wie `cmd.exe`:
+
+1. **Objektorientiert:** Im Gegensatz zu anderen Shells, die hauptsächlich mit Text arbeiten, arbeitet PowerShell mit Objekten. Das bedeutet, dass du, wenn du einen Befehl in PowerShell ausführst, nicht nur plain Text-Ausgabe erhälst; Sondern strukturierte Daten, die du manipulieren und an weitere Befehle übergeben kannst.
+2. **Fast eine Programmiersprache:** PowerShell verwendet eine Skriptsprache, die auf .NET Core basiert und, im Vergleich zu Batch-Skripten in `cmd.exe`, komplexere und anspruchsvollere Skripte ermöglicht.
+3. **Integriert mit Windows:** PowerShell ist eng in das Windows-Betriebssystem integriert und ermöglicht eine einfache Verwaltung von Windows-Komponenten wie der Registry, Active Directory und Windows Management Instrumentation (WMI).
+4. **Konsistenz:** PowerShell folgt einem einheitlichen Syntax und einer sinnvollen Namenskonvention. Das macht es einfacher Powershell zu lernen und zu verwenden.
+5. **Erweiterbarkeit:** PowerShell ermöglicht die Erstellung und Verwendung von benutzerdefinierten Modulen, welche die Funktionalität erweitern können.
+
+## Bevor wir anfangen
+
+Für die Arbeit mit PowerShell, empfehle ich folgende Anwendungen/Erweiterungen zu verwenden:
+
+## Empfehlenswert zur Arbeit mit PowerShell
+
+<CardGrid>
+  <LinkCard title="Installiere PowerShell" href="https://learn.microsoft.com/de-de/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.3" target="_blank" description="Die neuste cross-platform Version von Powershell." />
+  <LinkCard title="Installiere Visual Studio Code" href="https://code.visualstudio.com/" target="_blank"
+  description="Der Code-Editor der Wahl für Microsoft-Sprachen." />
+  <LinkCard title="VSCode-Erweiterung: PowerShell" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell" target="_blank"
+  description="Autocomplete und Syntax-Highlighting" />
+  <LinkCard title="VSCode-Erweiterung: Error-Lens" href="https://marketplace.visualstudio.com/items?itemName=usernamehw.errorlens" target="_blank"
+  description="Zeigt Fehler am Bildschirmrand an, in der Zeile, wo der Fehler gemacht wurde." />
+  <LinkCard title="VSCode-Erweiterung: TabOut" href="https://marketplace.visualstudio.com/items?itemName=albert.TabOut" target="_blank"
+  description="Ermöglicht das “Herausspringen” des Cursors aus einer Klammer heraus." />
+</CardGrid>
+
+## PowerShell-Komponenten
+
+PowerShell besteht aus mehreren Komponenten, die zusammenarbeiten, um seine Funktionalität bereitzustellen. Einige der wichtigsten Komponenten sind:
+
+### Cmdlets
+
+Cmdlets (ausgesprochen "command-lets") sind einfache, einzelne Funktionen ausführende Befehle, die in PowerShell spezifische Aktionen ausführen. Sie folgen einer Verben-Nomen-Namenskonvention wie **`Get-ChildItem`**, **`New-Item`** oder **`Remove-Item`**. Dies macht es einfach zu verstehen, was ein Cmdlet tut, indem man sich nur seinen Namen ansieht.
+
+### Aliase
+
+Aliase sind kurze, alternative Namen für Cmdlets, die das Tippen von Befehlen schneller und bequemer machen können. Anstelle von **`Get-ChildItem`** kannst du beispielsweise das Alias `gci`, oder auch `ls`, verwenden. PowerShell verfügt über viele integrierte Aliase, und Sie können auch eigene benutzerdefinierte Aliase erstellen.
+
+Um ein eigenes Alias in PowerShell zu erstellen, verwende das Cmdlet **`New-Alias`**. Nutze beispielsweise den folgenden Befehl, um ein Alias `ginit` zu erstellen, mit dem wir ein neues Git-Repository erstellen können.
+
+```powershell
+New-Alias -Name ginit -Value 'git init && git add . && git commit -m "Initial Commit"'
+```
+
+Nach Ausführung dieses Befehls kannst du **`ginit`** als Abkürzung in der aktuellen Shell verwenden. Um das Alias permanent zu speichern, schreibe den Befehl in dein `$PROFILE`.
+
+### Variablen
+
+Variablen in PowerShell werden verwendet, um Daten wie Zeichenfolgen, Zahlen oder Objekte zu speichern. Sie werden durch ein Dollarzeichen (**`$`**) gefolgt von einem Variablennamen wie **`$var`** angezeigt. Variablen können in Ausdrücken verwendet oder als Parameter an Cmdlets übergeben werden.
+
+## PowerShell-Syntax und Konventionen
+
+PowerShell hat seine eigene einzigartige Syntax und Konventionen, die Benutzern dabei helfen, Befehle und Skripte leicht zu verstehen und zu schreiben. Hier sind einige der wesentlichen Konventionen, die du kennen solltest:
+
+### Groß- und Kleinschreibung
+
+PowerShell ist nicht groß- oder kleinschreibungsempfindlich, was bedeutet, dass du Cmdlets, Variablen und andere Elemente entweder in Groß- oder Kleinschreibung eingeben kannst und PowerShell sie auf dieselbe Weise interpretiert. Zum Beispiel werden **`Get-ChildItem`**, **`get-childitem`** und **`gEt-ChIlDiTeM`** als gleichwertig betrachtet.
+
+### Befehlsstruktur
+
+Die grundlegende Struktur eines PowerShell-Befehls besteht aus einem Cmdlet, gefolgt von optionalen Parametern und ihren Werten. Das allgemeine Format lautet:
+
+```powershell
+Cmdlet-Name -ParameterName ParameterValue
+```
+
+Um beispielsweise den Inhalt des Verzeichnisses **`C:\\Windows`** aufzulisten, kannst du den folgenden Befehl verwenden:
+
+```powershell
+Get-ChildItem -Path C:\\Windows
+```
+
+Hier ist **`Get-ChildItem`** das Cmdlet, **`-Path`** ein Parameter und **`C:\\Windows`** der Parameterwert.
+
+### Pipeline
+
+Die Pipeline-Funktion von PowerShell ermöglicht es Ihnen, die Ausgabe eines Cmdlets als Eingabe an ein anderes Cmdlet zu übergeben. Du kannst mehrere Cmdlets durch Verwendung des Pipe-Symbols (**`|`**) miteinander verketten. Dies ermöglicht es dir, komplexe Befehlsfolgen durch Kombination einfacherer Befehle zu erstellen.
+
+Beispielsweise kannst du mit dem folgenden Befehl alle Textdateien im Verzeichnis **`C:\\Windows`** auflisten:
+
+```powershell
+Get-ChildItem -Path C:\\Windows | Where-Object { $_.Extension -eq '.txt' }
+```
+
+Hier wird die Ausgabe des Cmdlets **`Get-ChildItem`** an das Cmdlet **`Where-Object`** weitergeleitet, das die Ergebnisse basierend auf der angegebenen Bedingung filtert.
+
+### Anführungszeichen
+
+In PowerShell kannst du sowohl einfache (**`'`**) als auch doppelte (**`"`**) Anführungszeichen verwenden, um Strings (Zeichenketten) zu definieren. Sie verhalten sich jedoch unterschiedlich:
+
+#### Einfache Anführungszeichen (**`'`**):
+
+Diese definieren einen Literal-String, was bedeutet, dass Variablen oder Escape-Zeichen innerhalb des Strings als reiner Text behandelt werden.
+
+Beispiel:
+
+```powershell
+$name = 'John'
+$greeting = 'Hello, $name'
+Write-Host $greeting
+```
+
+Ausgabe:
+
+```powershell
+Hello, $name
+```
+
+#### Doppelte Anführungszeichen (**`"`**):
+
+Diese definieren einen erweiterbaren String, was bedeutet, dass Variablen innerhalb des Strings durch ihre Werte ersetzt und Escape-Zeichen verarbeitet werden.
+
+Beispiel:
+
+```powershell
+$name = 'John'
+$greeting = "Hello, $name"
+Write-Host $greeting
+```
+
+Ausgabe:
+
+```powershell
+Hello, John
+```
+
+## Kommentieren
+
+Du kannst deinem Code Kommentare hinzufügen, um Erklärungen oder Anmerkungen bereitzustellen. Kommentare werden nicht als Teil des Codes ausgeführt, helfen aber dabei, die Lesbarkeit und Wartbarkeit deiner Skripte zu verbessern. Es gibt zwei Arten von Kommentaren in PowerShell:
+
+- Einzeilige Kommentare: Um einen einzeiligen Kommentar zu erstellen, verwende das Hash-Symbol (**`#`**) gefolgt von deinem Kommentar.
+    
+    ```powershell
+    # This is a single-line comment
+    Get-ChildItem
+    ```
+    
+- Mehrzeilige Kommentare: Um einen mehrzeiligen Kommentar zu erstellen, verwende die Symbole **`<#`** und **`#>`**, um deinen Kommentar einzuschließen.
+    
+    ```powershell
+    <#
+      This is a multi-line comment
+      spanning multiple lines
+    #>
+    Get-ChildItem
+    ```
+    

@@ -1,0 +1,6 @@
+.gitconfig_include
+**/node_modules
+.trash
+notion-export
+local
+.obsidian/workspace.json

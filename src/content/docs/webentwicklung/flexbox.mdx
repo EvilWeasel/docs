@@ -1,0 +1,67 @@
+---
+title: How to Flexbox
+description: Eine kurze Einleitung zur Display flex Eigenschaft in CSS
+---
+
+
+Die Flexbox in CSS ist ein Ein-Dimensionales Layout, welches uns diverse Einstellungen für die Platzierung von Kind-Elementen gibt.
+
+Die folgenden Grafiken stammen von [css-tricks.com](https://css-tricks.com/snippets/css/a-guide-to-flexbox/).
+
+![](https://css-tricks.com/wp-content/uploads/2018/10/01-container.svg)
+
+```css
+.container {
+  display: flex;
+}
+```
+
+## Richtung
+
+Die `flex-direction` gibt die Richtung des Layouts vor. Standard ist `flex-direction: row;` also Links->Rechts. Mögliche Werte sind `row`, `column`, `row-reverse` und `column-reverse`.
+
+![the four possible values of flex-direction being shown: top to bottom, bottom to top, right to left, and left to right](https://css-tricks.com/wp-content/uploads/2018/10/flex-direction.svg)
+
+```css
+.container {
+  flex-direction: column;
+}
+```
+
+## Zeilenumbruch
+
+Möchten wir einen automatischen Zeilenumbruch, können wir die `flex-wrap` Eigenschaft auf `wrap` setzen.
+
+![two rows of boxes, the first wrapping down onto the second](https://css-tricks.com/wp-content/uploads/2018/10/flex-wrap.svg)
+
+```css
+.container {
+  flex-wrap: wrap;
+}
+```
+
+## Zentrieren auf Primärachse
+
+Das Zentrieren von Elementen fällt vielen CSS-Anfängern oft schwer. Mit Flexbox ist es super-einfach, vorausgesetzt wir wissen, welches die Primär-Achse ist. Diese wird von `flex-direction` vorgegeben.
+Die Primärachse wird mit `justify-content` zentriert. Das folgende Beispiel geht von `flex-direction: row;` aus und zentriert damit auf der X-Achse.
+
+![flex items within a flex container demonstrating the different spacing options](https://css-tricks.com/wp-content/uploads/2018/10/justify-content.svg)
+
+```css
+.container {
+  justify-content: space-around;
+}
+```
+
+## Zentrieren auf Sekundärachse
+
+Mit `align-items` lassen sich die Kind-Elemente auf der Sekundärachse zentrieren. Wenn wir weiterhin von `flex-direction: row;` ausgehen, können wir so auf der Y-Achse zentrieren.
+
+![demonstration of differnet alignment options, like all boxes stuck to the top of a flex parent, the bottom, stretched out, or along a baseline](https://css-tricks.com/wp-content/uploads/2018/10/align-items.svg)
+
+```css
+.container {
+  align-items: center;
+}
+```
+

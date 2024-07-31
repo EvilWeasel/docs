@@ -1,0 +1,52 @@
+---
+title: SSH und Kryptographie
+description: Remoteverbindungen mit ssh und digitale Schlüssel mit GnuPG.
+sidebar:
+  order: 13
+---
+
+- [x] ssh
+- [ ] gpg
+- [ ] signature-checking
+- [ ] (openssl) oder eher mkcert
+
+SSH ist ein Protokoll, mit dem man sich auf Remote-Maschinen verbinden kann. Es unterstützt mehrere Authentifizierungsmethoden und ist generell als sehr sicher zu bewerten, zumindest solange man die Best-Practices zur Absicherung befolgt.
+
+Nehmen wir an, wir haben 2 Ubuntu-Installationen:
+
+- Ubuntu-Client -> Ubuntu Desktop 22.04.4
+- Ubuntu-Server -> Ubuntu Server 22.04.4
+
+Wir wollen uns von Client auf den Server verbinden. Das folgende Beispiel 
+
+## SSH-Server einrichten
+
+import { Steps } from '@astrojs/starlight/components';
+
+<Steps>
+1. Installiere OpenSSH-Server:
+   ```bash
+   sudo apt update && sudo apt install openssh-server
+   ```
+2. (Optional) Erstelle ein Backup der SSHD-Konfiguration:
+   ```bash
+   sudo cp /etc/ssh/sshd_config ~/sshd_config.bak
+   ```
+3. (Optional) Bearbeite die Konfiguration je nach Sicherheitsanforderungen.
+4. Erstelle eine Regel für die Firewall, damit SSH-Verbindungen erlaubt sind:
+   ```bash
+   sudo ufw enable && sudo ufw allow ssh
+   ```
+5. Starte den SSH-Server neu, um die Konfiguration neu zu laden:
+   ```bash
+   sudo systemctl restart sshd
+   ```
+</Steps>
+
+## SSH-Client verbinden
+
+```bash
+ssh <username>@<hostname> # z.B. ssh max-muster@mybuntu
+```
+
+Die Verbindung kann anschließend mit `strg+d` oder mit dem `exit` Command geschlossen werden.

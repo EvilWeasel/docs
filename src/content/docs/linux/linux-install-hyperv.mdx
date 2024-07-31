@@ -1,0 +1,57 @@
+---
+title: Installation über HyperV
+description: Wie man mithilfe von HyperV eine Linux-VM erstellt.
+sidebar:
+  order: 0
+---
+
+## Einleitung
+
+Um auf dem eigenen Windows PC ein Linux Betriebssystem zu installieren gibt es mehrere Möglichkeiten. In diesem Artikel wird der Weg über Microsoft HyperV erläutert. Die beste Methode jedoch, zumindest für die meisten Anwendungsfälle, ist die Installation über WSL. Mehr dazu hier: [Installation von Linux über WSL](/linux/linux-install-wsl)
+
+## Hinweis für Firmenlaptops
+
+Die Installation mit HyperV setzt, im übrigen [wie die mit WSL](/linux/linux-install-wsl/), voraus, dass man Administratorberechtigungen auf dem Computer benötigt. Diese werden lediglich für die Einrichtung des Systems benötigt und sollte beim Einsatz von Firmenlaptops/-Computern mit dem zuständigen Administrator abgesprochen werden.
+
+## Installation
+
+Um mit Hyper-V eine virtuelle Linux-Machine zu erstellen, gibt es 2 Wege:
+
+### Quick Create
+
+![hyperv-0](../assets/linux-hyperv/hyperv-0.png)
+
+![hyperv-1](../assets/linux-hyperv/hyperv-1.png)
+
+### New (manuell)
+
+![hyperv-2](../assets/linux-hyperv/hyperv-2.png)
+
+![hyperv-3](../assets/linux-hyperv/hyperv-3.png)
+
+![hyperv-4](../assets/linux-hyperv/hyperv-4.png)
+
+![hyperv-4](../assets/linux-hyperv/hyperv-5.png)
+
+![hyperv-6](../assets/linux-hyperv/hyperv-6.png)
+
+![hyperv-7](../assets/linux-hyperv/hyperv-7.png)
+
+![hyperv-8](../assets/linux-hyperv/hyperv-8.png)
+
+![hyperv-9](../assets/linux-hyperv/hyperv-9.png)
+
+![hyperv-10](../assets/linux-hyperv/hyperv-10.png)
+
+![hyperv-11](../assets/linux-hyperv/hyperv-11.png)
+
+![hyperv-12](../assets/linux-hyperv/hyperv-12.png)
+
+## Zusätzliche Ressourcen und Quellen
+
+import { LinkCard, CardGrid } from '@astrojs/starlight/components';
+
+<CardGrid>
+  <LinkCard title="Bewährte Methoden für die Ausführung von Linux auf Hyper-V" href="https://learn.microsoft.com/de-de/windows-server/virtualization/hyper-v/best-practices-for-running-linux-on-hyper-v" target="_blank" />
+  <LinkCard title="How to install Ubuntu 20.04 on Hyper-V with enhanced session" href="https://francescotonini.medium.com/how-to-install-ubuntu-20-04-on-hyper-v-with-enhanced-session-b20a269a5fa7" target="_blank" />
+</CardGrid>

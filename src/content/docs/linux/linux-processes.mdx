@@ -1,0 +1,131 @@
+---
+title: Prozessverwaltung
+description: Prozesse starten, stoppen, im Hintergrund ausführen und was sind Prozesse eigentlich?
+sidebar:
+  order: 11
+---
+
+import { Tabs, TabItem, Code, LinkCard, CardGrid, Aside } from '@astrojs/starlight/components';
+
+Das Management von Prozessen in einem Linux-System ist eine grundlegende Aufgabe für Systemadministratoren. 
+
+## Prozessüberwachung
+
+### ps
+
+Zeigt aktuell laufende Prozesse an, welche von der aktuellen Shell gestartet wurden.
+
+```bash
+ps
+```
+
+- `a` für **alle Prozesse**
+- `u` für **den User**
+- `x` für **den Command**
+
+Übergeben wir `aux` als Parameter, sehen wir alle Prozesse unseres Systems.
+
+```bash
+ps aux
+```
+
+**htop**: Ein interaktives Tool zur Prozessüberwachung.
+
+```bash
+htop
+```
+
+## Prozesspriorität
+
+Wie unter Windows auch, hat in Linux jeder Prozess eine festgelegte Priorität. Diese Priorität, im Umgangston als "Niceness" bezeichnet, bestimmt, wie viel Rechenleistung dem Prozess zusteht. Die "Niceness" wird von -20 bis 19 definiert. Negative Werte können nur mit `root` Berechtigungen festgelegt werden.
+
+**Dabei gilt:** Je höher die "Niceness", desto niedriger die Priorität.
+
+:::tip
+
+Es hilft sich zu merken: Ein Prozess, welcher "nicht Nett" ist, also eine niedrige "Niceness" hat, der bekommt auch mehr Rechenzeit. Man könnte ihn auch als "gierig" bezeichnen.
+
+:::
+
+### nice
+
+Startet einen Prozess mit einer festgelegten Priorität.
+
+```bash
+nice -n 15 myscript.sh # Started myscript mit einer niedrigen Priorität - Netter Prozess
+```
+
+### renice
+
+Ändert die Priorität eines laufenden Prozesses.
+
+```bash
+renice -5 -p 1234
+```
+
+## Prozesssteuerung
+
+### kill
+
+Sendet ein Signal an einen Prozess, um ihn zu beenden. Es gibt verschiedene Signale, darunter z.B. das `SIGKILL` Signal, welches das Betriebssystem anweist, den Prozess zu beenden.
+
+Eine Liste mit möglichen Signalen lässt sich mit `kill -L` anzeigen.
+
+```bash
+kill -9 1234
+```
+
+:::note
+
+`SIGKILL` beendet einen Prozess ohne wenn und aber durch das Betriebssystem. Meist ist es allerdings besser vorher ein `kill -15` zu versuchen. Das ist das `SIGTERM` Signal. Bei diesem Signal hat der Prozess die Möglichkeit zu reagieren und z.B. offene Dateistreams zu schließen.
+
+:::
+
+### pkill
+
+Beendet Prozesse basierend auf ihrem Namen. Praktisch, wenn man den zu beendenden Prozess eindeutig mit dem Namen identifizieren kann.
+
+`pkill` sendet standardmäßig das `SIGTERM` Signal.
+
+```bash
+pkill firefox
+```
+
+## Automatisierung von Aufgaben
+
+### crond
+
+Verwaltet geplante Aufgaben, die periodisch ausgeführt werden. `crond` ist das Equivalent des *Windows Task Scheduler*.
+
+```bash
+crontab -e
+```
+
+### systemd
+
+Ein System- und Dienstverwaltungsdaemon.
+
+```bash
+systemctl status myservice.service
+```
+
+<Aside type="tip" title="Hilfreiche Tipps">
+  Nutze `htop` für eine detaillierte und farbige Darstellung der Prozessauslastung deines Systems.
+</Aside>
+
+## Weiterführende Ressourcen
+
+<CardGrid>
+  <LinkCard
+    title="Crontab Guru"
+    description="Generiere Cron-Schedules mit einem praktischen GUI"
+    href="https://crontab.guru/"
+    target="_blank"
+  />
+  <LinkCard
+    title="How to Use Systemctl to Manage Systemd Services and Units"
+    description="Ein hilfreicher Artikel mit allem wichtigen zum Thema SystemD"
+    href="https://www.digitalocean.com/community/tutorials/how-to-use-systemctl-to-manage-systemd-services-and-units"
+    target="_blank"
+  />
+</CardGrid>

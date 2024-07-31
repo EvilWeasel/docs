@@ -1,0 +1,160 @@
+{
+  "workspaces": {
+    "EvilSpace": {
+      "main": {
+        "id": "33aed0e00a1bfb22",
+        "type": "split",
+        "children": [
+          {
+            "id": "8bf52ae04aeb5a64",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "c18c65383dd6b77a",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "drafts/HTML-Forms.md",
+                    "mode": "source",
+                    "source": false
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "direction": "vertical"
+      },
+      "left": {
+        "id": "74ad37d53e50e5b2",
+        "type": "split",
+        "children": [
+          {
+            "id": "03f57e8651bae230",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "95302232c3a31d29",
+                "type": "leaf",
+                "state": {
+                  "type": "file-explorer",
+                  "state": {
+                    "sortOrder": "alphabetical"
+                  }
+                }
+              },
+              {
+                "id": "ecf9937787a1ffdf",
+                "type": "leaf",
+                "state": {
+                  "type": "search",
+                  "state": {
+                    "query": "",
+                    "matchingCase": false,
+                    "explainSearch": false,
+                    "collapseAll": false,
+                    "extraContext": false,
+                    "sortOrder": "alphabetical"
+                  }
+                }
+              },
+              {
+                "id": "72bfe76ba8d0cdfb",
+                "type": "leaf",
+                "state": {
+                  "type": "bookmarks",
+                  "state": {}
+                }
+              }
+            ]
+          }
+        ],
+        "direction": "horizontal",
+        "width": 204.50043487548828
+      },
+      "right": {
+        "id": "3864b23b98b85ca6",
+        "type": "split",
+        "children": [
+          {
+            "id": "cd672288221c2602",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "7ee80cae6a6cd94a",
+                "type": "leaf",
+                "state": {
+                  "type": "backlink",
+                  "state": {
+                    "file": "drafts/HTML-Forms.md",
+                    "collapseAll": false,
+                    "extraContext": false,
+                    "sortOrder": "alphabetical",
+                    "showSearch": false,
+                    "searchQuery": "",
+                    "backlinkCollapsed": false,
+                    "unlinkedCollapsed": true
+                  }
+                }
+              },
+              {
+                "id": "80f032fd2a635826",
+                "type": "leaf",
+                "state": {
+                  "type": "outgoing-link",
+                  "state": {
+                    "file": "drafts/HTML-Forms.md",
+                    "linksCollapsed": false,
+                    "unlinkedCollapsed": true
+                  }
+                }
+              },
+              {
+                "id": "969680d804e24d4d",
+                "type": "leaf",
+                "state": {
+                  "type": "tag",
+                  "state": {
+                    "sortOrder": "frequency",
+                    "useHierarchy": true
+                  }
+                }
+              },
+              {
+                "id": "e0c98cea41e5d24d",
+                "type": "leaf",
+                "state": {
+                  "type": "outline",
+                  "state": {
+                    "file": "drafts/HTML-Forms.md"
+                  }
+                }
+              }
+            ],
+            "currentTab": 3
+          }
+        ],
+        "direction": "horizontal",
+        "width": 300,
+        "collapsed": true
+      },
+      "left-ribbon": {
+        "hiddenItems": {
+          "switcher:Open quick switcher": false,
+          "graph:Open graph view": false,
+          "canvas:Create new canvas": false,
+          "templates:Insert template": true,
+          "command-palette:Open command palette": true,
+          "markdown-importer:Open format converter": false,
+          "workspaces:Manage workspace layouts": false,
+          "edit-mdx:New .mdx file": false,
+          "obsidian-advanced-slides:Show Slide Preview": false
+        }
+      },
+      "active": "c18c65383dd6b77a",
+      "mtime": "2024-03-27T15:20:45+01:00"
+    }
+  },
+  "active": "EvilSpace"
+}

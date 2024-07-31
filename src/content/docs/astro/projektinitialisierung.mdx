@@ -1,0 +1,47 @@
+---
+title: Projektinitialisierung
+description: Wie man ein neues Astro-Projekt aufsetzt.
+sidebar:
+  order: 1
+---
+
+import { LinkCard, CardGrid } from '@astrojs/starlight/components';
+
+
+:::note
+
+Um ein Astro-Projekt lokal, auf der eigenen Maschine, zu initialisieren, benötigen wir Node.JS und NPM installiert. Beide lassen sich von der offiziellen NodeJS-Website runterladen.
+
+<LinkCard target="_blank" title="NodeJS - Download" href="https://nodejs.org/en" />
+
+:::
+
+Ein neues Astro-Projekt kann mit folgendem Command initialisiert werden. Der Command erstellt einen eigenen Ordner für das Projekt für dich.
+
+```shell
+npm create astro@latest
+```
+
+Danach müssen wir noch mit dem `cd` Command in den Ordner wechseln.
+
+```shell
+cd <Ordner>
+```
+
+## 🚀Starten Des Development-Servers
+
+Der folgende Command startet den Dev-Server auf `localhost:4321`.
+
+```shell
+npm run dev
+```
+
+## 🏗️Bauen Des Projekts
+
+Um aus unseren einzelnen Source-Files eine an den Kunden auslieferbare Web-App zu generieren, nutzen wir:
+
+```shell
+npm run build
+```
+
+Die Dateien, welche auf dem jeweiligen Hoster zur Veröffentlichung hochgeladen werden müssen, landen nach Eingabe des Command im `/dist` Ordner. Die Inhalte des Ordners können mit einem beliebigen Web-Server, wie z.B. `Apache` oder `nginx`, veröffentlicht werden. Auf den folgenden Seiten wird jedoch auch das Deployment mithilfe von **Vercel** aufgezeigt.

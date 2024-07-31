@@ -1,0 +1,149 @@
+---
+title: Die erste Stunde mit Linux
+description: Wie man die erste Stunde mit Linux überlebt.
+sidebar:
+  order: 2
+---
+
+## System-Update
+
+Regelmäßige Updates sind wichtig, um potentielle Sicherheitsrisiken zu minimieren. Im Gegensatz zu Windows Update behindert uns der Update-Prozess in Linux nicht und dauert auch nicht aufwärts von Stunden...
+
+```shell
+sudo apt update # Updated die lokale Paket-Datenbank
+sudo apt upgrade -y # Updated alle Pakete mit neueren Versionen
+```
+
+## Dateisystem in a Nutshell
+
+In Windows sind auf dem obersten Level des Dateisystems die "Festplatten" wie `C:\`, `D:\` und so weiter.
+
+In Linux gibt es ein Dateisystem, das mit `/` anfängt. Das ist quasi wie die `C:\` Festplatte in Windows. Wenn wir in Linux mehr Speicher brauchen, dann partitionieren wir Festplatten und **Mounten** diese in einem Ordner, üblicherweise in `/mnt`. Mehr dazu später...
+
+import { FileTree } from "@astrojs/starlight/components";
+
+<FileTree>
+- bin/ Executables
+- sbin/ System-Executables
+- etc/ Config-Files
+- lib/ 32-Bit Bibliotheken
+- lib64/ 64-Bit Bibliotheken
+- mnt/ Mount-Points für Festplatten/USB
+- root/ Root-User Home-Verzeichnis
+- home/ User Home-Verzeichnisse
+  - myUser1
+  - myUser2
+  - ...
+- usr/ Usershare (z.B. Webbrowsers, Word-Prozessoren)
+- opt/ Optional-Files
+- var/ Variable-Files
+- dev/ Devices/Hardware-Interfaces
+- proc/ Prozesses; System-Info
+</FileTree>
+
+### Navigation
+
+Wechseln des aktuellen Verzeichnisses:
+
+```shell
+cd / # Navigiert in das Root-Verzeichnis
+cd ~ # Navigiert in das Home-Verzeichnis
+cd ./config # Navigiert in ~/.config - Relativ zum aktuellen Ordner
+cd .. # Navigiert einen Ordner zurück in ~/
+cd /home/myUser/exampleFolder # Navigiert zu diesem absoluten Pfad
+```
+
+### Wo bin ich eigentlich
+
+Um den aktuellen Pfad in der Shell zu erfahren, nutze `pwd`.
+
+```shell
+pwd # gibt das aktuelle working-directory (Arbeitsverzeichnis) zurück
+```
+
+### Was ist hier eigentlich
+
+Mit `ls` können wir den Inhalt des aktuellen Verzeichnisses sehen. Wir können außerdem zusätzliche Parameter nutzen, um die Darstellung zu verbessern:
+
+
+| Parameter | Erläuterung                                                                                |
+| --------- | ------------------------------------------------------------------------------------------ |
+| `-l`      | Ausgabe als Liste (Top->Bottom)                                                            |
+| `-a`      | Zeigt **alle** Einträge an (versteckte Dateien)                                            |
+| `-h`      | Zeigt die Größe von Ordnern und Dateien als menschlich Lesbares Format an (Human-Readable) |
+
+```shell
+ls # List all files and folders
+ls -lah # List all (inkl. Hidden) files and folders with human-readable format
+```
+
+### Erstellen von Ordnern
+
+Ordner werden mit dem `mkdir` Command erstellt.
+
+```shell
+mkdir meinOrdner # Erstellt den Ordner im aktuellen Ordner ./meinOrdner
+mkdir ~/.config/nvim # Erstellt den Ordner im versteckten .config Ordner im Home-Directory
+mkdir -p ./test-a/test-b/test-c # Erstellt den Ordner `test-c` und alle Parent-Verzeichnise, sofern diese noch nicht existieren
+```
+
+### Erstellen von Dateien
+
+Dateien kann man mit unterschiedlichen Commands erstellen. Der einfachste ist der `touch` Command.
+
+```shell
+touch meineDatei # Dateien in Linux müssen keine Dateiendung haben...
+touch readme.md # ... können sie aber :)
+touch test-a test-b test-ordner/test-c # Mehrere Dateien können gleichzeitig erstellt werden
+```
+
+Oft wollen wir den Output eines Commands in einer Datei abspeichern, z.B. für Logging. Das geht mit Output-Redirection. Mehr dazu später.
+
+```shell
+ls -lah > stat.txt # Speichert den Output des Befehls in stat.txt ab
+```
+
+## Hilfe bekommen
+
+Es kann schwer fallen, sich die ganzen Befehle zu merken. Mit Erfahrung kommt das ganze von alleine, allerdings kann man sich jederzeit mit `man` und `info` Hilfe holen.
+
+### Man
+
+`Man` steht für *Manual* und ist die Benutzeranleitung in Linux. Jeder Command kann eine Help-Page inkludieren, und die Meisten machen dies auch. Dort ist dokumentiert, was jeder Befehl macht, welche Optionen und Parameter man übergeben kann.
+
+```shell
+man ls # Öffnet die man-page von ls
+man ls # Öffnet die man-page von ls
+man man # Öffnet die man-page von man selbst
+man ls.7 # Manche Befehle haben mehrere man-pages
+```
+
+Die man-page wird im `less` Programm geöffnet. Navigieren in `less` kann man lediglich mit einem VIM-Ähnlichen Syntax.
+
+- `h` und `k` für Hoch und Runter.
+- `gg` und `G` um zum Anfang/Ende der Datei zu springen.
+- `/` gefolgt von Suchbegriff und *Enter* sucht einen Begriff in der Datei.
+- `q` steht für *Quit* und schließt die man-page.
+
+Mehr zum VIM-Syntax später.
+
+### Info
+
+Der `info` Command ist der Versuch eine modernere Alternative zu den veralteten man-pages anzubieten. Leider bieten nicht alle Commands eine Info-Page an, aber für die Commands die es machen, ist es eine echte Bereicherung. Mit **`n` (next) und `p` (previous)** können wir die Seiten wechseln. Mit den **Pfeiltasten** lässt sich innerhalb des Dokuments navigieren. **Links kann man mit Enter öffnen**. *Hilfe zum Syntax* kann man sich mit `H` anzeigen lassen.
+
+```shell
+info info # Öffnet die info-page des info Commands
+info ls # Öffnet die info-page des ls Commands
+info man # Falls keine Info-Page existiert, wird autmatisch die entsprechende man-page angezeigt
+```
+
+### VIM-Syntax
+
+Die Funktionsweise von VIM hier in Textform darzustellen wäre nicht nur redundant, sondern auch schwer zu folgen. Hier einige Videos auf Youtube, welche die Funktion in kürze erklären:
+
+import { LinkCard, CardGrid } from '@astrojs/starlight/components';
+
+<CardGrid>
+  <LinkCard title="VIM in 100 Seconds | Englisch" href="https://www.youtube.com/watch?v=-txKSRn0qeA" target="_blank" />
+  <LinkCard title="VI und VIM Grundlagen | Deutsch" href="https://www.youtube.com/watch?v=-JdRKRx2ioc" target="_blank" />
+</CardGrid>

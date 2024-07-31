@@ -1,0 +1,34 @@
+---
+title: Projektstruktur
+description: Eine Übersicht über die wichtigsten Dateien und Ordner eines Astro-Projekts.
+sidebar:
+  order: 2
+---
+
+Astro hat ein bereits vordefiniertes Layout für die Projektstruktur. Du kannst natürlich weitere Unter-Ordner hinzufügen und dein Projekt strukturieren wie es für dich am Besten ist. Allerdings gibt es einige kleine Vorgaben.
+
+- `src/*` Source-Code der Website (Komponenten, Seiten, Styles, usw.)
+- `public/*` Alle öffentlichen statischen Dateien. Diese Dateien werden einfach durch den Webserver veröffentlicht (Fonts, Icons, usw.)
+- `package.json` Das Projekt-Manifest. Hier werden alle Abhängigkeiten deklariert sowie der Projekt-Name, der Author, usw.
+- `astro.config.mjs` Eine Astro Konfigurationsdatei
+- `tsconfig.json` Eine TypeScript Konfigurationsdatei
+
+import { FileTree } from '@astrojs/starlight/components';
+
+<FileTree>
+
+- astro.config.mjs # Astro Einstellungen
+- package.json # Das Manifest des Projekts / "Lieferschein"
+- public/ # Ordner für statische Dateien z.B. Bilder
+  - favicon.svg # Ein Icon für die Registerkarte
+- README.md # Projektinformationen
+- src/ # Source-Code der Website
+  - components/ # Wiederverwendbare Komponenten
+    - Card.astro # Karten-Komponente
+  - layouts/ # Vorlagen für die "pages"
+    - Layout.astro # Die Standard-Vorlage
+  - pages/ # URL-Mapped Webpages
+    - index.astro
+- tsconfig.json # TypeScript Projekt-Konfiguration
+
+</FileTree>

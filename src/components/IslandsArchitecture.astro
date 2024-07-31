@@ -1,0 +1,51 @@
+<div class="container not-content">
+  <div class="header">Header (interaktive Insel) <code>client:load</code>
+  </div>
+  <div class="sidebar">Sidebar (statisches HTML)</div>
+  <div class="content">Statische Inhalte wie Text, Bilder, etc.</div>
+  <div class="image-carousel">Bilder­karussell (interaktive Insel) <code>client:visible</code></div>
+  <div class="footer">Footer (statisches HTML)</div>
+</div>
+
+<style>
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    height: 600px;
+    border: 2px solid black;
+  }
+  .container > div {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid gray;
+  }
+  .header {
+    grid-column: span 2;
+    background-color: rgba(81, 69, 255, 0.3);
+    text-align: center;
+  }
+  .sidebar {
+    grid-row: span 2;
+    background-color: rgba(171, 171, 171, 0.3);
+  }
+  .content {
+    background-color: rgba(171, 171, 171, 0.3);
+    text-align: center;
+  }
+  .image-carousel {
+    background-color: rgba(255, 69, 69, 0.3);
+    padding: 20px;
+    text-align: center;
+  }
+  .ad {
+    text-align: center;
+  }
+  .footer {
+    grid-column: span 2;
+    text-align: center;
+    background-color: rgba(171, 171, 171, 0.3);
+  }
+</style>

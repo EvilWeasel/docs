@@ -1,0 +1,102 @@
+---
+title: Benutzer- und Gruppenverwaltung
+description: Eine umfassende Anleitung zur Verwaltung von Benutzer- und Gruppenberechtigungen in Linux.
+sidebar:
+  order: 5
+---
+
+Die Verwaltung von Benutzern und Gruppen in Linux ist ein wichtiger Aspekt der Systemsicherheit und Benutzerverwaltung. In diesem Artikel werden verschiedene Befehle zur Benutzer- und Gruppenverwaltung in Linux vorgestellt und ihre Verwendung erklärt.
+
+## Benutzerverwaltung
+
+:::tip
+
+Auszug aus der Manpage für `adduser`:
+
+> adduser and addgroup add users and groups to the system according to command line options and configuration information in /etc/adduser.conf. They are friendlier front ends to the low level tools like useradd, groupadd and usermod  programs, by default choosing  Debian policy conformant UID and GID values, creating a home directory with skeletal configuration, running a custom script, and other features.
+
+:::
+
+### adduser
+
+Der Befehl `adduser` wird verwendet, um einen neuen Benutzer zur Linux-System hinzuzufügen. Es erstellt automatisch ein Home-Verzeichnis für den Benutzer und führt andere notwendige Konfigurationsschritte durch.
+
+```shell
+sudo adduser username
+```
+
+Das System wird nun nach dem vollständigen Namen, dem Geburtsdatum und dem Kontakt des Benutzers fragen. Diese Informationen sind optional und können mit Enter übersprungen werden. Das Passwort muss man jedoch angeben.
+
+```bash
+Enter new UNIX password:  
+Retype new UNIX password:  
+passwd: password updated successfully
+```
+
+Nach erfolgreicher Erstellung des Benutzers wird eine Bestätigung angezeigt.
+
+```bash
+Adding user `neuerbenutzer' ... Adding new group `neuerbenutzer' (1001) ... Adding new user `neuerbenutzer' (1001) with group `neuerbenutzer' ... Creating home directory `/home/neuerbenutzer' ... Copying files from `/etc/skel' ... Enter new UNIX password:  Retype new UNIX password:  passwd: password updated successfully
+```
+
+Jetzt kann man sich mit dem neuen Benutzer und dem zuvor definierten Passwort einloggen.
+
+```bash
+su - neuerbenutzer
+```
+
+:::note
+
+`su` steht für "Switch-User" und bedeutet "Benutzer wechseln".
+
+:::
+
+### deluser
+
+Mit `deluser` kann ein Benutzer aus dem System gelöscht werden.
+
+```shell
+sudo deluser username
+```
+
+### passwd
+
+`passwd` wird verwendet, um das Passwort eines Benutzers zu ändern. Nach der Eingabe des Befehls wird der Benutzer aufgefordert, sein neues Passwort einzugeben und zu bestätigen.
+
+```shell
+passwd
+```
+
+## Gruppenverwaltung
+
+### groupadd
+
+Mit `groupadd` kann eine neue Gruppe zum Linux-System hinzugefügt werden.
+
+```shell
+sudo groupadd newgroup
+```
+
+### delgroup
+
+`delgroup` wird verwendet, um eine Gruppe aus dem System zu entfernen.
+
+```shell
+sudo delgroup groupname
+```
+
+### groups
+
+`groups` zeigt die Gruppenzugehörigkeit eines bestimmten Benutzers an.
+
+```shell
+groups username
+```
+
+## usermod
+
+`usermod` ermöglicht die Änderung von Benutzereigenschaften wie Benutzernamen, Gruppenzugehörigkeit, Passwortablaufdatum und mehr. In diesem Fall fügen wir den Benutzer `username` in die Gruppe `newgroup` hinzu.
+
+```shell
+sudo usermod -aG newgroup username
+```
