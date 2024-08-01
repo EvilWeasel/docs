@@ -1,4 +1,4 @@
-# Evil-Docs &middot; [![Netlify Status]()
+# Evil-Docs &middot; [![Netlify Status](https://api.netlify.com/api/v1/badges/2ad1ee45-2d53-41fe-bcb2-aa9907a62dbc/deploy-status)](https://app.netlify.com/sites/evilweasel-docs/deploys)
 
 ## Local Development
 
