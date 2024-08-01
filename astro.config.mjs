@@ -24,7 +24,6 @@ export default defineConfig({
       customCss: ["./src/styles/global.css", "./src/fonts/font-face.css"],
       components: {
         Head: "./src/components/Head.astro",
-        EditLink: "./src/components/EditLink.astro",
       },
       sidebar: [
         {
