@@ -14,6 +14,7 @@ export default defineConfig({
       description:
         "Guides, Ressourcen und Referenzen rund um Anwendungsentwicklung, Systemintegration und andere IT-Themen.",
       defaultLocale: "de",
+      favicon: "/favicon.svg",
       editLink: {
         baseUrl: "https://github.com/evilweasel/docs/edit/main",
       },

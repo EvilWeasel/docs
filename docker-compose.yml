@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  web:
+    build:
+      context: . # The build context is the current directory
+      dockerfile: Dockerfile
+    container_name: evil-docs
+    ports:
+      - "443:443"
+    # volumes:
+    # !!IMPORTANT!!
+    # You should definetly USE YOUR OWN CERTIFICATES! This image only comes with self-signed publicly exposed certificates are only intended for internal testing.
+    # Also replace the REPO_URL with your own fork of this repository
+    #  - ./certs:/certs # Bind the local ./certs folder to /certs in the container
+    environment:
+      - REPO_URL=https://github.com/EvilWeasel/docs # The URL of the repository to clone and auto-update.
+      - LOCAL_DIR=/app # Working dir inside container (No trailing slash!)
+      - CHECK_INTERVAL=300 # Check every 5 minutes
+    restart: unless-stopped
