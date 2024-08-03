@@ -4,7 +4,8 @@ import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://evilweasel-docs.netlify.app/",
+  site: "https://evilweasel.github.io",
+  base: "/docs",
   devToolbar: {
     enabled: false,
   },
