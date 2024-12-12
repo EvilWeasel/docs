@@ -1,15 +1,22 @@
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
 import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
+import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://evilweasel.github.io",
   base: "/docs",
   devToolbar: {
-    enabled: false,
+    enabled: true,
+  },
+  vite: {
+    define: {
+      "process.env": {},
+    },
   },
   integrations: [
+    react(),
     starlight({
       title: "Unterrichtsmarterial",
       description:
