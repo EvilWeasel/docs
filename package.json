@@ -11,12 +11,17 @@
     "slides": "cp -r ./src/content/docs/slides ./public"
   },
   "dependencies": {
-    "@astrojs/check": "^0.7.0",
-    "@astrojs/starlight": "^0.23.1",
+    "@astrojs/check": "^0.9.4",
+    "@astrojs/starlight": "^0.29.3",
     "@expressive-code/plugin-line-numbers": "^0.33.5",
-    "astro": "^4.9.2",
+    "astro": "^5.0.5",
     "netlify-plugin-discord": "^0.0.2",
     "sharp": "^0.32.5",
     "typescript": "^5.3.3"
+  },
+  "pnpm": {
+    "overrides": {
+      "@astrojs/mdx": "^4.0.0"
+    }
   }
 }
