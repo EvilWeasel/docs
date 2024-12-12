@@ -1,3 +1,6 @@
+# ignore obsidian files
+**/.obsidian
+
 # build output
 dist/
 # generated types
