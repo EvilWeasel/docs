@@ -22,7 +22,7 @@ Heute benutzen aufwärts von 90% aller Server eine der vielen Linux-Varianten un
 
 Zuerst wurde Linux mit einer proprietären Lizenz veröffentlicht. Nach einigen Monaten hat sich Linus dann entschieden, eine Änderung der Lizenz anzukündigen. Seither ist Linux unter der [GNU GPL](https://de.wikipedia.org/wiki/GNU_General_Public_License) für alle kostenlos für alle verfügbar, nicht nur zur freien Nutzung, sondern auch zur Veränderung und Erstellung von Derivaten des Systems. 
 
-In Kurz: Linux ist 1992 kostenlos zu nutzen und kann ohne Erwerb einer kostspieligen Lizenz kommerziell genutzt werden.
+In Kurz: Linux ist seit 1992 kostenlos zu nutzen und kann ohne Erwerb einer kostspieligen Lizenz kommerziell genutzt werden.
 
 > Software is like sex…
 > It’s better, when it’s free
